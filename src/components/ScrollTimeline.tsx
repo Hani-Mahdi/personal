@@ -137,13 +137,29 @@ export default function ScrollTimeline() {
       // Only lock scroll if mouse is over timeline
       if (isMouseOverTimeline && timelineTop < viewportHeight && timelineBottom > 0) {
         const currentProgress = scrollProgress.get();
+        const isScrollingDown = e.deltaY > 0;
         
+        // Allow regular scrolling if at 100% and scrolling down
+        if (currentProgress >= 1 && isScrollingDown) {
+          setIsTimelineActive(false);
+          isLocked = false;
+          return; // Don't prevent default, allow normal scroll
+        }
+        
+        // Allow regular scrolling if at 0% and scrolling up
+        if (currentProgress <= 0 && !isScrollingDown) {
+          setIsTimelineActive(false);
+          isLocked = false;
+          return; // Don't prevent default, allow normal scroll
+        }
+        
+        // Lock scroll for all other cases (scrolling through timeline)
         e.preventDefault();
         setIsTimelineActive(true);
         isLocked = true;
         
         // Update progress based on wheel direction
-        const delta = e.deltaY > 0 ? 0.01 : -0.01;
+        const delta = isScrollingDown ? 0.01 : -0.01;
         const newProgress = Math.max(0, Math.min(1, currentProgress + delta));
         scrollProgress.set(newProgress);
         
