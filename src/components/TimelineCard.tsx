@@ -45,13 +45,7 @@ export default function TimelineCard({ event, index, totalEvents, scrollProgress
       >
         {/* Year Badge */}
         <div className="absolute -top-4 left-6">
-          <div className={`px-4 py-2 bg-white border-2 ${
-            event.type === 'education' ? 'border-amber-600' :
-            event.type === 'project' ? 'border-red-700' :
-            event.type === 'experience' ? 'border-black' :
-            event.type === 'achievement' ? 'border-amber-500' :
-            'border-gray-900'
-          } rounded-full`}>
+          <div className="px-4 py-2 bg-white border-2 border-black rounded-full">
             <span className="text-xs font-light tracking-widest uppercase">{event.year}</span>
           </div>
         </div>
@@ -65,13 +59,7 @@ export default function TimelineCard({ event, index, totalEvents, scrollProgress
 
         {/* Event Type Indicator */}
         <div className="absolute bottom-4 right-4">
-          <div className={`w-3 h-3 rounded-full ${
-            event.type === 'education' ? 'bg-amber-600' :
-            event.type === 'project' ? 'bg-red-700' :
-            event.type === 'experience' ? 'bg-black' :
-            event.type === 'achievement' ? 'bg-amber-500' :
-            'bg-gray-900'
-          }`}></div>
+          <div className="w-3 h-3 rounded-full bg-black"></div>
         </div>
       </motion.div>
 

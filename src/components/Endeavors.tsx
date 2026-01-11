@@ -63,7 +63,7 @@ export default function Endeavors() {
               offset: ["start end", "end start"]
             });
 
-            const blobScale = useTransform(sectionProgress.scrollYProgress, [0, 0.5, 1], [0.5, 1.5, 0.5]);
+            const blobScale = useTransform(sectionProgress.scrollYProgress, [0, 0.3, 0.5, 0.7, 1], [0.5, 1.5, 1.5, 1.5, 0.5]);
             const blobOpacity = useTransform(sectionProgress.scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
             const contentOpacity = useTransform(sectionProgress.scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
             const contentX = useTransform(sectionProgress.scrollYProgress, [0, 0.5, 1], 

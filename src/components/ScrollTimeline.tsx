@@ -192,11 +192,9 @@ export default function ScrollTimeline() {
   const progressPercent = useTransform(scrollProgress, [0, 1], [0, 100]);
   const roundedProgress = useTransform(progressPercent, (latest) => Math.round(latest));
   
-  // Color transitions: Gold (0-33%) -> Red (33-66%) -> Black (66-100%)
-  const progressColor = useTransform(smoothProgress, [0, 0.33, 0.66, 1], [
-    '#d97706', // amber-600 (gold) at 0%
-    '#d97706', // amber-600 (gold) at 33%
-    '#b91c1c', // red-700 at 66%  
+  // Color transitions: White throughout (black and white only)
+  const progressColor = useTransform(smoothProgress, [0, 1], [
+    '#ffffff', // white at 0%
     '#000000'  // black at 100%
   ]);
 
